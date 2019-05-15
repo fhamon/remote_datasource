@@ -813,7 +813,7 @@ class RemoteDatasource extends DataSource implements iDatasource
             $this->dsParamURL = $this->parseParamURL($this->dsParamURL);
 
             if (isset($this->dsParamXPATH)) {
-                $this->dsParamXPATH = $this->__processParametersInString(stripslashes($this->dsParamXPATH), $this->_env);
+                $this->dsParamXPATH = $this->processParametersInString(stripslashes($this->dsParamXPATH), $this->_env);
             }
 
             // Builds a Default Stylesheet to transform the resulting XML with
