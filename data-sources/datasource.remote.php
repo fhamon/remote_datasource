@@ -817,7 +817,7 @@ class RemoteDatasource extends DataSource implements iDatasource
             }
 
             // Builds a Default Stylesheet to transform the resulting XML with
-            $stylesheet = new XMLElement('xsl:stylesheet');
+            $stylesheet = new XMLDocument('xsl:stylesheet');
             $stylesheet->setAttributeArray(array('version' => '1.0', 'xmlns:xsl' => 'http://www.w3.org/1999/XSL/Transform'));
 
             $output = new XMLElement('xsl:output');
@@ -841,7 +841,7 @@ class RemoteDatasource extends DataSource implements iDatasource
 
             $template->appendChild($instruction);
             $stylesheet->appendChild($template);
-            $stylesheet->setIncludeHeader(true);
+            $stylesheet->renderHeader(true);
 
             $xsl = $stylesheet->generate(true);
 
