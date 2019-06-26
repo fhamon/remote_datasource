@@ -300,7 +300,7 @@ class RemoteDatasource extends DataSource implements iDatasource
     {
         if (!is_null($handle) && isset($settings[self::getClass()])) {
             $cache = self::getCache();
-            $cache_id = self::buildCacheID($settings[self::getClass()]);
+            $cache_id = static::buildCacheID($settings[self::getClass()]);
         }
 
         // If `clear_cache` is set, clear it..
@@ -773,7 +773,7 @@ class RemoteDatasource extends DataSource implements iDatasource
                 'paramoutput' => $outputparams
             ));
             $data = self::transformResult(self::$url_result, $settings['format']);
-            $cache_id = self::buildCacheID($settings);
+            $cache_id = static::buildCacheID($settings);
             self::getCache()->write($cache_id, $data, $settings['cache'], $params['rootelement']);
         }
 
@@ -846,7 +846,7 @@ class RemoteDatasource extends DataSource implements iDatasource
             $xsl = $stylesheet->generate(true);
 
             // Check for an existing Cache for this Datasource
-            $cache_id = self::buildCacheID($this);
+            $cache_id = static::buildCacheID($this);
             $cachedData = self::getCache()->read($cache_id, $this->dsParamROOTELEMENT);
             $writeToCache = null;
             $isCacheValid = true;
